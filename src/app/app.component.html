@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  	<h1>
+    	{{ title }}!
+  	</h1>
+  	<div *ngIf = "isGone; then goneCondition else appear">
+  	</div>
+  	<ng-template #appear>
+		<form>
+			<div class="form-control">
+				<input type="text" #date ng-model="date">
+			</div>
+			<div class="form-control">
+				<button class="button submit-btn" id="submit" name="submit" (click)="onSubmit(date.value)">Submit</button>
+			</div>
+		</form>
+		<div>
+			<span *ngIf = "isEmpty; then condition1 else condition2">
+			</span>
+			<ng-template class="condition1" #condition1>Date is Empty</ng-template>
+			<ng-template class="condition2" #condition2></ng-template>
+		</div>
+	</ng-template>
+	<ng-template #goneCondition>
+		{{value}}
+	</ng-template>
+  	<router-outlet></router-outlet>
+</div>
